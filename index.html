@@ -2,7 +2,7 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <title>Игра Змейка на весь экран</title>
+    <title>Г€ГЈГ°Г  Г‡Г¬ГҐГ©ГЄГ  Г­Г  ГўГҐГ±Гј ГЅГЄГ°Г Г­</title>
     <style>
         body {
             background-color: #000;
@@ -13,7 +13,7 @@
             display: block;
             margin: 0;
             padding: 0;
-            background-color: #0000FF; /* Ярко синий фон */
+            background-color: #0000FF; /* ГџГ°ГЄГ® Г±ГЁГ­ГЁГ© ГґГ®Г­ */
             background-image: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjxzdHlsZT4gdGV4dCB7IGZvbnQtc2l6ZTogNDBweDsgZmlsbDogI2ZmZjsgdGV4dC1hbmNob3I6IG1pZGRsZTsgZG9taW5hbnQtYmFzZWxpbmU6IG1pZGRsZTsgfSBcPC9zdHlsZT48dGV4dCB4PSI1MCUiIHk9IjUwJSI+RG8geW91IHdhbnQgdG8gcGxheSwgU3VuZGV0PzwvdGV4dD48L3N2Zz4=');
             background-size: cover;
         }
@@ -25,7 +25,7 @@
         const canvas = document.getElementById('game');
         const ctx = canvas.getContext('2d');
 
-        // Установка размеров канваса на полный экран
+        // Г“Г±ГІГ Г­Г®ГўГЄГ  Г°Г Г§Г¬ГҐГ°Г®Гў ГЄГ Г­ГўГ Г±Г  Г­Г  ГЇГ®Г«Г­Г»Г© ГЅГЄГ°Г Г­
         function resizeCanvas() {
             canvas.width = window.innerWidth;
             canvas.height = window.innerHeight;
@@ -33,7 +33,7 @@
         resizeCanvas();
         window.addEventListener('resize', resizeCanvas);
 
-        // Параметры игры
+        // ГЏГ Г°Г Г¬ГҐГІГ°Г» ГЁГЈГ°Г»
         const gridSize = 20;
         let snake = [{x: gridSize * 5, y: gridSize * 5}];
         let dx = gridSize;
@@ -41,13 +41,13 @@
         let food = {x: 0, y: 0};
         let score = 0;
 
-        // Создание еды
+        // Г‘Г®Г§Г¤Г Г­ГЁГҐ ГҐГ¤Г»
         createFood();
 
-        // Основной игровой цикл
+        // ГЋГ±Г­Г®ГўГ­Г®Г© ГЁГЈГ°Г®ГўГ®Г© Г¶ГЁГЄГ«
         function gameLoop() {
             if (isGameOver()) {
-                alert('Игра окончена! Ваш счёт: ' + score);
+                alert('Г€ГЈГ°Г  Г®ГЄГ®Г­Г·ГҐГ­Г ! Г‚Г Гё Г±Г·ВёГІ: ' + score);
                 document.location.reload();
                 return;
             }
@@ -74,15 +74,15 @@
         function moveSnake() {
             const head = {x: snake[0].x + dx, y: snake[0].y + dy};
 
-            // Добавляем новую голову змейки
+            // Г„Г®ГЎГ ГўГ«ГїГҐГ¬ Г­Г®ГўГіГѕ ГЈГ®Г«Г®ГўГі Г§Г¬ГҐГ©ГЄГЁ
             snake.unshift(head);
 
-            // Проверяем, съела ли змейка еду
+            // ГЏГ°Г®ГўГҐГ°ГїГҐГ¬, Г±ГєГҐГ«Г  Г«ГЁ Г§Г¬ГҐГ©ГЄГ  ГҐГ¤Гі
             if (head.x === food.x && head.y === food.y) {
                 score += 10;
                 createFood();
             } else {
-                // Удаляем последний элемент, если еда не съедена
+                // Г“Г¤Г Г«ГїГҐГ¬ ГЇГ®Г±Г«ГҐГ¤Г­ГЁГ© ГЅГ«ГҐГ¬ГҐГ­ГІ, ГҐГ±Г«ГЁ ГҐГ¤Г  Г­ГҐ Г±ГєГҐГ¤ГҐГ­Г 
                 snake.pop();
             }
         }
@@ -100,7 +100,7 @@
         function isGameOver() {
             const head = snake[0];
 
-            // Проверяем столкновение со стенами
+            // ГЏГ°Г®ГўГҐГ°ГїГҐГ¬ Г±ГІГ®Г«ГЄГ­Г®ГўГҐГ­ГЁГҐ Г±Г® Г±ГІГҐГ­Г Г¬ГЁ
             const hitLeftWall = head.x < 0;
             const hitRightWall = head.x >= canvas.width;
             const hitTopWall = head.y < 0;
@@ -110,7 +110,7 @@
                 return true;
             }
 
-            // Проверяем столкновение с самим собой
+            // ГЏГ°Г®ГўГҐГ°ГїГҐГ¬ Г±ГІГ®Г«ГЄГ­Г®ГўГҐГ­ГЁГҐ Г± Г±Г Г¬ГЁГ¬ Г±Г®ГЎГ®Г©
             for (let i = 4; i < snake.length; i++) {
                 if (snake[i].x === head.x && snake[i].y === head.y) {
                     return true;
@@ -119,7 +119,7 @@
             return false;
         }
 
-        // Управление змейкой с помощью клавиш
+        // Г“ГЇГ°Г ГўГ«ГҐГ­ГЁГҐ Г§Г¬ГҐГ©ГЄГ®Г© Г± ГЇГ®Г¬Г®Г№ГјГѕ ГЄГ«Г ГўГЁГё
         document.addEventListener('keydown', changeDirection);
 
         function changeDirection(event) {
@@ -153,7 +153,7 @@
             }
         }
 
-        // Запуск игры
+        // Г‡Г ГЇГіГ±ГЄ ГЁГЈГ°Г»
         gameLoop();
     </script>
 </body>
